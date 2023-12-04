@@ -6,7 +6,17 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>Data Selfie App</h1>
+
+  <p>
+     latitude: <span id="latitude"></span>°</br>
+     longitude: <span id="longitude"></span>°
+  </p>
+
+  <button id="submit">Submit</button>
+  
   <script>
+    document.getElementById('submit').addEventListener ('click', () => {
     if ('geolocation' in navigator) {
       console.log('geolocation available')
       navigator.geolocation.getCurrentPosition(async position => {
@@ -30,15 +40,9 @@
     } else {
       console.log('geolocation not available')
     }
+  })
   </script>
-  <h1>Data Selfie App</h1>
 
-  <p>
-     latitude: <span id="latitude"></span>°</br>
-     longitude: <span id="longitude"></span>°
-  </p>
-
-  <button id="submit">Submit</button>
 
 </body>
 </html>
