@@ -17,7 +17,6 @@ app.post('/api', (request, response) => {
   const timestamp = Date.now()
   data.timestamp = timestamp
   database.insert(data)
-  console.log(database)
   response.json({
     status: 'success',
     timestamp: timestamp,
