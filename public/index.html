@@ -6,20 +6,37 @@
   <title>Document</title>
 </head>
 <body>
+  <script>
+    if ('geolocation' in navigator) {
+      console.log('geolocation available')
+      navigator.geolocation.getCurrentPosition(async position => {
+        const lat = position.coords.latitude
+        const lon = position.coords.longitude
+        document.getElementById('latitude').textContent = lat
+        document.getElementById('longitude').textContent = lon
+
+        const data = { lat, lon }
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }
+        const response = await fetch('/api', options)
+        const json = await response.json()
+        console.log(json)
+      })
+    } else {
+      console.log('geolocation not available')
+    }
+  </script>
   <h1>Data Selfie App</h1>
 
-  <p>BOOP</p>
+  <p>
+     latitude: <span id="latitude"></span>°</br>
+     longitude: <span id="longitude"></span>°
+  </p>
 
-  <ul>
-    <li>
-      <a href="index.html" target="_blank"> index page </a>
-    </li>
-    <li>
-      <a href="boop.html" target="_blank"> first boop </a>
-    </li>
-    <li>
-      <a href="boop1.html" target="_blank"> second boop </a>
-    </li>
-  </ul>
 </body>
 </html>
