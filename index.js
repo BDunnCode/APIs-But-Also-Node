@@ -15,3 +15,5 @@ app.post('/api', (request, response) => {
     longitude: data.lon
   })
 })
+
+positionStoringArray = []
