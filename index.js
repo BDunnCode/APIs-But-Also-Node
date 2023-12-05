@@ -10,6 +10,16 @@ app.listen(PORT, () => console.log('listening at 3000'))
 const database = new Datastore('database.db')
 database.loadDatabase()
 
+app.get('/api', (request, response) => {
+  database.find({},(err, data) => {
+    response.json({ test: 123 })
+      if (err) {
+        response.end()
+        return
+      }
+  })
+})
+
 app.post('/api', (request, response) => {
   const data = request.body
   const timestamp = Date.now()
