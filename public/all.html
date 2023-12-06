@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Momentbook App</title>
 </head>
 <body>
-  <h1>Data Selfie App</h1>
+  <h1>Momentbook App</h1>
   <script>
     getData()
     async function getData() {
@@ -15,21 +15,18 @@
 
       for (item of data) {
       const root = document.createElement('div')
-      const extradata = document.createElement('div')
+      const quote = document.createElement('div')
       const date = document.createElement('div')
       const geo = document.createElement('div')
       
-      extradata.innerText = `random text: ${item.extradata}`
+      quote.innerText = `random text: ${item.quote}`
       geo.textContent = `${item.lat}°, ${item.lon}°`
-      const dateString = new Date(item.timeStamp).toLocaleString // Test w/ toString()
+      const dateString = new Date(item.timestamp).toLocaleString() // Test w/ toString()
+      date.textContent = dateString
       
-      
-      root.append(extradata, date, geo) // Test w/ appendChild()
-
+      root.append(quote, date, geo) // Test w/ appendChild()
       document.body.append(root)
-
     }
-
       console.log(data)
     }
 
